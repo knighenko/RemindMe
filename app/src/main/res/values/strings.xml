@@ -2,4 +2,9 @@
     <string name="app_name">RemindMe</string>
     <string name="toolbar_title">Nächster Termin</string>
     <string name="search_title">Suche</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="zukunft">Zukunft</string>
+    <string name="datum">Datum</string>
+    <string name="letzte">Letzte</string>
 </resources>

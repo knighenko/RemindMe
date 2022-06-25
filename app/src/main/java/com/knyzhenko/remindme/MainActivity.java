@@ -1,19 +1,26 @@
 package com.knyzhenko.remindme;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toolbar;
 
+import com.google.android.material.tabs.TabLayout;
+
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
+    private TabLayout tabLayout;
+    private ViewPager2 viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initToolbar();
+        tabLayout=findViewById(R.id.tab_layout);
+        viewPager =findViewById(R.id.view_pager);
     }
 
     private void initToolbar() {
