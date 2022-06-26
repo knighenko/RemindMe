@@ -1,6 +1,7 @@
 package com.knyzhenko.remindme;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
@@ -13,14 +14,18 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
+    private PagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initToolbar();
-        tabLayout=findViewById(R.id.tab_layout);
-        viewPager =findViewById(R.id.view_pager);
+        tabLayout = findViewById(R.id.tab_layout);
+        viewPager = findViewById(R.id.view_pager);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        pagerAdapter=new PagerAdapter(fragmentManager,getLifecycle());
+        viewPager.setAdapter(pagerAdapter);
     }
 
     private void initToolbar() {
