@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.Toolbar;
 
 import com.google.android.material.tabs.TabLayout;
+import com.knyzhenko.remindme.adapters.PagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -24,8 +25,31 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
         FragmentManager fragmentManager = getSupportFragmentManager();
-        pagerAdapter=new PagerAdapter(fragmentManager,getLifecycle());
+        pagerAdapter = new PagerAdapter(fragmentManager, getLifecycle());
         viewPager.setAdapter(pagerAdapter);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                tabLayout.selectTab(tabLayout.getTabAt(position));
+            }
+        });
     }
 
     private void initToolbar() {
