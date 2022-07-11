@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toolbar;
 
 import com.google.android.material.tabs.TabLayout;
 import com.knyzhenko.remindme.adapters.PagerAdapter;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -20,6 +23,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ///example to change language
+        String languageToLoad="ru";
+        Locale locale=new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config=new Configuration();
+        config.locale=locale;
+        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
+        this.setContentView(R.layout.activity_main);
+
+        //
         setContentView(R.layout.activity_main);
         initToolbar();
         tabLayout = findViewById(R.id.tab_layout);
