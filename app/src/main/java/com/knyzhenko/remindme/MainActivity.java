@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -23,16 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ///example to change language
-        String languageToLoad="ru";
-        Locale locale=new Locale(languageToLoad);
-        Locale.setDefault(locale);
-        Configuration config=new Configuration();
-        config.locale=locale;
-        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
-        this.setContentView(R.layout.activity_main);
 
-        //
         setContentView(R.layout.activity_main);
         initToolbar();
         tabLayout = findViewById(R.id.tab_layout);
@@ -71,8 +63,137 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                return false;
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+
+                if (id == R.id.sub_menu_de) {
+                    ///to change language
+                    String languageToLoad = "de";
+                    Locale locale = new Locale(languageToLoad);
+                    Locale.setDefault(locale);
+                    Configuration config = new Configuration();
+                    config.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+                    setContentView(R.layout.activity_main);
+                    initToolbar();
+                    tabLayout = findViewById(R.id.tab_layout);
+                    viewPager = findViewById(R.id.view_pager);
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    pagerAdapter = new PagerAdapter(fragmentManager, getLifecycle());
+                    viewPager.setAdapter(pagerAdapter);
+                    tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                        @Override
+                        public void onTabSelected(TabLayout.Tab tab) {
+                            viewPager.setCurrentItem(tab.getPosition());
+                        }
+
+                        @Override
+                        public void onTabUnselected(TabLayout.Tab tab) {
+
+                        }
+
+                        @Override
+                        public void onTabReselected(TabLayout.Tab tab) {
+
+                        }
+                    });
+                    viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+                        @Override
+                        public void onPageSelected(int position) {
+                            super.onPageSelected(position);
+                            tabLayout.selectTab(tabLayout.getTabAt(position));
+                        }
+                    });
+                    //
+                    return true;
+                }
+
+                if (id == R.id.sub_menu_en) {
+///to change language
+                    String languageToLoad = "en";
+                    Locale locale = new Locale(languageToLoad);
+                    Locale.setDefault(locale);
+                    Configuration config = new Configuration();
+                    config.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+                    setContentView(R.layout.activity_main);
+                    initToolbar();
+                    tabLayout = findViewById(R.id.tab_layout);
+                    viewPager = findViewById(R.id.view_pager);
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    pagerAdapter = new PagerAdapter(fragmentManager, getLifecycle());
+                    viewPager.setAdapter(pagerAdapter);
+                    tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                        @Override
+                        public void onTabSelected(TabLayout.Tab tab) {
+                            viewPager.setCurrentItem(tab.getPosition());
+                        }
+
+                        @Override
+                        public void onTabUnselected(TabLayout.Tab tab) {
+
+                        }
+
+                        @Override
+                        public void onTabReselected(TabLayout.Tab tab) {
+
+                        }
+                    });
+                    viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+                        @Override
+                        public void onPageSelected(int position) {
+                            super.onPageSelected(position);
+                            tabLayout.selectTab(tabLayout.getTabAt(position));
+                        }
+                    });
+                    //
+
+                    return true;
+                }
+                if (id == R.id.sub_menu_ru) {
+///to change language
+                    String languageToLoad = "ru";
+                    Locale locale = new Locale(languageToLoad);
+                    Locale.setDefault(locale);
+                    Configuration config = new Configuration();
+                    config.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+                   setContentView(R.layout.activity_main);
+                    initToolbar();
+                    tabLayout = findViewById(R.id.tab_layout);
+                    viewPager = findViewById(R.id.view_pager);
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    pagerAdapter = new PagerAdapter(fragmentManager, getLifecycle());
+                    viewPager.setAdapter(pagerAdapter);
+                    tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                        @Override
+                        public void onTabSelected(TabLayout.Tab tab) {
+                            viewPager.setCurrentItem(tab.getPosition());
+                        }
+
+                        @Override
+                        public void onTabUnselected(TabLayout.Tab tab) {
+
+                        }
+
+                        @Override
+                        public void onTabReselected(TabLayout.Tab tab) {
+
+                        }
+                    });
+                    viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+                        @Override
+                        public void onPageSelected(int position) {
+                            super.onPageSelected(position);
+                            tabLayout.selectTab(tabLayout.getTabAt(position));
+                        }
+                    });
+                    //
+
+                    return true;
+                }
+
+                return onOptionsItemSelected(item);
             }
         });
         toolbar.inflateMenu(R.menu.menu);
