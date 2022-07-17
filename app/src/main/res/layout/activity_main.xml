@@ -22,12 +22,12 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/zukunft" />
+            android:text="@string/future" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/datum" />
+            android:text="@string/calendar" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

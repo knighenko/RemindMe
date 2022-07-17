@@ -4,12 +4,17 @@
     <string name="search_title">Suche</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="zukunft">Zukunft</string>
+    <string name="future">Zukunft</string>
     <string name="Neutermin">Neue Termin hinzufügen</string>
-    <string name="datum">Kalender</string>
+    <string name="calendar">Kalender</string>
     <string name="letzte">Letzte</string>
     <string name="sprache">sprache</string>
     <string name="Deutsch" translatable="false">Deutsch</string>
     <string name="Russian" translatable="false">Русский</string>
     <string name="English" translatable="false">English</string>
+    <string name="date" >Datum</string>
+    <string name="importance" >Bedeutung</string>
+    <string name="description">Beschreibung</string>
+    <string name="category">Kategorie</string>
+    <string name="title">Titel</string>
 </resources>
