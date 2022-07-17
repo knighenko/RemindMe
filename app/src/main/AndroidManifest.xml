@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RemindMe">
         <activity
+            android:name=".CreateTermin"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

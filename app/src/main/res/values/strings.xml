@@ -10,6 +10,6 @@
     <string name="letzte">Letzte</string>
     <string name="sprache">sprache</string>
     <string name="Deutsch" translatable="false">Deutsch</string>
-    <string name="Russian" translatable="false" >Русский</string>
+    <string name="Russian" translatable="false">Русский</string>
     <string name="English" translatable="false">English</string>
 </resources>
