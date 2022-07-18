@@ -12,9 +12,29 @@
     <string name="Deutsch" translatable="false">Deutsch</string>
     <string name="Russian" translatable="false">Русский</string>
     <string name="English" translatable="false">English</string>
-    <string name="date" >Datum</string>
-    <string name="importance" >Bedeutung</string>
+    <string name="date">Datum</string>
+    <string name="importance">Bedeutung</string>
     <string name="description">Beschreibung</string>
     <string name="category">Kategorie</string>
+    <string name="medicine">Medizin</string>
+    <string name="leisure">Freizeit</string>
+    <string name="other">Sonstiges</string>
     <string name="title">Titel</string>
+    <string name="job">Arbeit</string>
+    <string name="high">Hoch</string>
+    <string name="middle">Mitte</string>
+    <string name="low">Niedrig</string>
+    <string-array name="categories">
+        <item>@string/medicine</item>
+        <item>@string/job</item>
+        <item>@string/leisure</item>
+        <item>@string/other</item>
+    </string-array>
+    <string-array name="importanceArray">
+        <item>@string/high</item>
+        <item>@string/middle</item>
+        <item>@string/low</item>
+    </string-array>
+
+
 </resources>
