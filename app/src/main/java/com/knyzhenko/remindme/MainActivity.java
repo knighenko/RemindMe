@@ -12,6 +12,7 @@ import android.widget.Toolbar;
 
 import com.google.android.material.tabs.TabLayout;
 import com.knyzhenko.remindme.adapters.PagerAdapter;
+import com.knyzhenko.remindme.database.DBHelper;
 
 import java.util.Locale;
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
     private PagerAdapter pagerAdapter;
+    private DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         pagerAdapter = new PagerAdapter(fragmentManager, getLifecycle());
         viewPager.setAdapter(pagerAdapter);
+        dbHelper=new DBHelper(this);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -158,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
                     Configuration config = new Configuration();
                     config.locale = locale;
                     getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-                   setContentView(R.layout.activity_main);
+                    setContentView(R.layout.activity_main);
                     initToolbar();
                     tabLayout = findViewById(R.id.tab_layout);
                     viewPager = findViewById(R.id.view_pager);
