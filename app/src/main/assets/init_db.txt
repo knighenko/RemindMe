@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS "termins" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"title"	TEXT NOT NULL,
+	"description"	TEXT,
+	"category"	TEXT,
+	"importance"	INTEGER,
+	"date"	INTEGER NOT NULL,
+	"time"	INTEGER,
+	PRIMARY KEY("id")
+);
+
+INSERT INTO "termins" ("title", "description", "date","importance" )
+VALUES
+("К зубнику",    "Запись к зубнику, пломба и чистка", "25465652216", "1");
+
+
+DELETE FROM termins WHERE id=2;
+
+UPDATE termins SET title = "В банк", type=1,description="Получить карту",date="22211215", importance=2 WHERE id = 3;

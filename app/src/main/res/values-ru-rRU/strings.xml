@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Termin</string>
+    <string name="toolbar_title">Твой Termin</string>
+    <string name="search_title">Поиск</string>
+    <string name="future">Будущие</string>
+    <string name="Neutermin">Добавить новый Termin</string>
+    <string name="calendar">Календарь</string>
+    <string name="letzte">Прошедшие</string>
+    <string name="sprache">Язык</string>
+    <string name="date">Дата</string>
+    <string name="importance">Важность</string>
+    <string name="description">Описание</string>
+    <string name="category">Категория</string>
+    <string name="title">Название</string>
+    <string name="medicine">Медицина</string>
+    <string name="job">Работа</string>
+    <string name="leisure">Отдых</string>
+    <string name="other">Другое</string>
+    <string name="high">Высокий</string>
+    <string name="middle">Средний</string>
+    <string name="low">Низкий</string>
+    <string-array name="categories">
+        <item>@string/medicine</item>
+        <item>@string/job</item>
+        <item>@string/leisure</item>
+        <item>@string/other</item>
+    </string-array>
+    <string-array name="importanceArray">
+        <item>@string/high</item>
+        <item>@string/middle</item>
+        <item>@string/low</item>
+    </string-array>
+</resources>

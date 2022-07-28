@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Termin</string>
+    <string name="toolbar_title">Your Termin</string>
+    <string name="search_title">Search</string>
+    <string name="future">Future</string>
+    <string name="Neutermin">Add new Termin</string>
+    <string name="calendar">Calendar</string>
+    <string name="letzte">Past</string>
+    <string name="sprache">Language</string>
+    <string name="date">Date</string>
+    <string name="importance">Importance</string>
+    <string name="description">Description</string>
+    <string name="category">Сategory</string>
+    <string name="title">Title</string>
+    <string name="medicine">Medicine</string>
+    <string name="job">Job</string>
+    <string name="other">Other</string>
+    <string name="leisure">Leisure</string>
+    <string name="high">High</string>
+    <string name="middle">Middle</string>
+    <string name="low">Low</string>
+    <string name="save">Save</string>
+
+    <string-array name="categories">
+        <item>@string/medicine</item>
+        <item>@string/job</item>
+        <item>@string/leisure</item>
+        <item>@string/other</item>
+    </string-array>
+    <string-array name="importanceArray">
+        <item>@string/high</item>
+        <item>@string/middle</item>
+        <item>@string/low</item>
+    </string-array>
+</resources>
