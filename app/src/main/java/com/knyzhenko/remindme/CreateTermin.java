@@ -17,7 +17,10 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.knyzhenko.remindme.database.DBHelper;
-import com.knyzhenko.remindme.tabs.Past;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class CreateTermin extends AppCompatActivity {
     private int count;
@@ -148,30 +151,40 @@ public class CreateTermin extends AppCompatActivity {
         }
     }
 
+    private long getDateLong() {
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year = datePicker.getYear();
+        int hour = timePicker.getHour();
+        int minute = timePicker.getMinute();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day, hour, minute);
+        return calendar.getTimeInMillis();
+    }
+
     private void writeToDB() {
         dbHelper = new DBHelper(this);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+
         contentValues.put(DBHelper.KEY_TITLE, editTextTitle.getText().toString());
         contentValues.put(DBHelper.KEY_DESCRIPTION, editTextDescription.getText().toString());
         contentValues.put(DBHelper.KEY_CATEGORY, spinnerCategory.getSelectedItem().toString());
         contentValues.put(DBHelper.KEY_IMPORTANCE, spinnerImportance.getSelectedItem().toString());
-        contentValues.put(DBHelper.KEY_DATE,datePicker.getDayOfMonth());
-        database.insert(DBHelper.TABLE_TERMINS,null,contentValues);
-        Cursor cursor=database.query(DBHelper.TABLE_TERMINS,null,null,null,null,null,null);
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.textViewPastdescription);
-        myAwesomeTextView.setText("masdfd,f,dsfmsd");
-       /**Need to change*/
-        while(cursor.moveToNext()) {
+        contentValues.put(DBHelper.KEY_DATE, getDateLong());
+        database.insert(DBHelper.TABLE_TERMINS, null, contentValues);
+        Cursor cursor = database.query(DBHelper.TABLE_TERMINS, null, null, null, null, null, null);
+
+        /**Need to change*/
+        while (cursor.moveToNext()) {
             int index;
             index = cursor.getColumnIndexOrThrow("title");
-            String firstName = cursor.getString(index);
+            String title = cursor.getString(index);
             index = cursor.getColumnIndexOrThrow("description");
-            String lastName = cursor.getString(index);
+            String description = cursor.getString(index);
             index = cursor.getColumnIndexOrThrow("date");
-            long id = cursor.getLong(index);
-
-
+            long date = cursor.getLong(index);
+            System.out.println("!!!!!!!!!!!!!!!"+title+"!!!!!!!!!!"+description+"!!!!!!!!!"+date);
 
         }
         cursor.close();

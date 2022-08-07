@@ -16,7 +16,7 @@ public class DBHelper extends SQLiteOpenHelper {
    public final static String KEY_CATEGORY = "category";
    public final static String KEY_IMPORTANCE = "importance";
    public final static String KEY_DATE = "date";
-   public final static String KEY_TIME = "time";
+
 
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -31,8 +31,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 KEY_DESCRIPTION + " TEXT, " +
                 KEY_CATEGORY + " TEXT, " +
                 KEY_IMPORTANCE + " INTEGER, " +
-                KEY_DATE + " INTEGER NOT NULL, " +
-                KEY_TIME + " INTEGER" +
+                KEY_DATE + " INTEGER NOT NULL" +
                 ")"
         );
 
