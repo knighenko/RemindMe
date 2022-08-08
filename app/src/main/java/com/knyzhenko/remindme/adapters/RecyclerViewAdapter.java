@@ -47,8 +47,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public TerminHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.imageViewHolder);
-            title = itemView.findViewById(R.id.textViewTitleTermin);
-            descriptoion = itemView.findViewById(R.id.textViewDescription);
+            title = itemView.findViewById(R.id.textViewTitleTerminHolder);
+            descriptoion = itemView.findViewById(R.id.textViewDescriptionHolder);
         }
     }
 }

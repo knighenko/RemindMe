@@ -3,6 +3,8 @@ package com.knyzhenko.remindme.tabs;
 import static android.view.View.VISIBLE;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,6 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.knyzhenko.remindme.CreateTermin;
 import com.knyzhenko.remindme.R;
 import com.knyzhenko.remindme.adapters.RecyclerViewAdapter;
+import com.knyzhenko.remindme.database.DBHelper;
 import com.knyzhenko.remindme.model.Termin;
 
 import java.util.ArrayList;
@@ -40,6 +43,7 @@ public class Future extends Fragment {
     private RecyclerView recyclerView;
     private ArrayList<Termin> termins;
     private TextView textViewFututre;
+    private DBHelper dbHelper;
 
     public Future() {
         // Required empty public constructor
@@ -80,7 +84,7 @@ public class Future extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_future, container, false);
-        final FloatingActionButton addButton =(FloatingActionButton) view.findViewById(R.id.floatingActionButton3);
+        final FloatingActionButton addButton = (FloatingActionButton) view.findViewById(R.id.floatingActionButton3);
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
@@ -88,30 +92,45 @@ public class Future extends Fragment {
                 startActivity(createTermin);
             }
         });
-        textViewFututre=view.findViewById(R.id.text_view_future);
+        textViewFututre = view.findViewById(R.id.textViewNewTermin);
 
         recyclerView = view.findViewById(R.id.recycler_view_future);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        termins = new ArrayList<>();
-        Termin termin1 = new Termin(1, 2, 152154545, 2, "Title1", "Description1");
-        termins.add(termin1);
-        Termin termin2 = new Termin(2, 3, 312154545, 2, "Title2", "Description2");
-        termins.add(termin2);
-        Termin termin3 = new Termin(3, 2, 35154545, 2, "Title3", "Description3");
-        termins.add(termin3);
-        Termin termin4 = new Termin(4, 1, 72154545, 2, "Title4", "Description4");
-        termins.add(termin4);
-        Termin termin6 = new Termin(5, 2, 572154545, 2, "Title5", "Description5");
-        termins.add(termin6);
-        Termin termin7 = new Termin(6, 2, 152154545, 2, "Title6", "Description1");
-        termins.add(termin7);
-        Termin termin8 = new Termin(7, 1, 232154545, 2, "Title7", "Description1");
-        termins.add(termin8);
-        Termin termin9 = new Termin(8, 3, 88854545, 2, "Title8", "Description1");
-        termins.add(termin9);
-        if (termins !=null) textViewFututre.setVisibility(VISIBLE);
-        recyclerView.setAdapter(new RecyclerViewAdapter(termins));
+        getTerminsFromDB();
+        if (termins == null) {
+            textViewFututre.setVisibility(VISIBLE);
+
+        } else recyclerView.setAdapter(new RecyclerViewAdapter(termins));
         return view;
+    }
+
+    private ArrayList<Termin> getTerminsFromDB() {
+        termins = new ArrayList<>();
+
+        dbHelper = new DBHelper(getActivity());
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.query(DBHelper.TABLE_TERMINS, null, null, null, null, null, null);
+
+        /**Need to change*/
+        while (cursor.moveToNext()) {
+            int index;
+            index = cursor.getColumnIndexOrThrow("id");
+            int id = cursor.getInt(index);
+            index = cursor.getColumnIndexOrThrow("title");
+            String title = cursor.getString(index);
+            index = cursor.getColumnIndexOrThrow("description");
+            String description = cursor.getString(index);
+            index = cursor.getColumnIndexOrThrow("category");
+            int category = cursor.getInt(index);
+            index = cursor.getColumnIndexOrThrow("importance");
+            int importance = cursor.getInt(index);
+            index = cursor.getColumnIndexOrThrow("date");
+            long date = cursor.getLong(index);
+            termins.add(new Termin(id, title, description, category, importance, date));
+
+        }
+        cursor.close();
+        return termins;
     }
 
 }

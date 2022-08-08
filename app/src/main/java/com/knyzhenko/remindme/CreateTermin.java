@@ -173,21 +173,8 @@ public class CreateTermin extends AppCompatActivity {
         contentValues.put(DBHelper.KEY_IMPORTANCE, spinnerImportance.getSelectedItem().toString());
         contentValues.put(DBHelper.KEY_DATE, getDateLong());
         database.insert(DBHelper.TABLE_TERMINS, null, contentValues);
-        Cursor cursor = database.query(DBHelper.TABLE_TERMINS, null, null, null, null, null, null);
 
-        /**Need to change*/
-        while (cursor.moveToNext()) {
-            int index;
-            index = cursor.getColumnIndexOrThrow("title");
-            String title = cursor.getString(index);
-            index = cursor.getColumnIndexOrThrow("description");
-            String description = cursor.getString(index);
-            index = cursor.getColumnIndexOrThrow("date");
-            long date = cursor.getLong(index);
-            System.out.println("!!!!!!!!!!!!!!!"+title+"!!!!!!!!!!"+description+"!!!!!!!!!"+date);
 
-        }
-        cursor.close();
     }
 
 }

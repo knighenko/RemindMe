@@ -4,18 +4,18 @@ import android.media.Image;
 
 public class Termin {
 
-    private int id,type,date,importance;
+    private int id,type,importance;
+    private long date;
     private String title, desc;
 
-    public Termin(int id, int type, int date, int importance, String title, String desc) {
+    public Termin(int id, String title, String desc, int category, int importance, long date) {
         this.id = id;
-        this.type = type;
+        this.type = category;
         this.date = date;
         this.importance = importance;
         this.title = title;
         this.desc = desc;
     }
-
 
     public int getId() {
         return id;
@@ -33,20 +33,20 @@ public class Termin {
         this.type = type;
     }
 
-    public int getDate() {
-        return date;
-    }
-
-    public void setDate(int date) {
-        this.date = date;
-    }
-
     public int getImportance() {
         return importance;
     }
 
     public void setImportance(int importance) {
         this.importance = importance;
+    }
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
     }
 
     public String getTitle() {

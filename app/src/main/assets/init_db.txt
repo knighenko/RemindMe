@@ -5,7 +5,6 @@ CREATE TABLE IF NOT EXISTS "termins" (
 	"category"	TEXT,
 	"importance"	INTEGER,
 	"date"	INTEGER NOT NULL,
-	"time"	INTEGER,
 	PRIMARY KEY("id")
 );
 
