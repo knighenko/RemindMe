@@ -28,6 +28,7 @@
     <string name="previous">Previous</string>
     <string name="time">Time</string>
     <string name="save">Speichern</string>
+    <string name="show">Show</string>
 
     <string-array name="categories">
         <item>@string/medicine</item>

@@ -9,12 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.Toast;
 
 import com.knyzhenko.remindme.R;
 import com.knyzhenko.remindme.adapters.RecyclerViewAdapter;
 import com.knyzhenko.remindme.model.Termin;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,7 +27,9 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class Calendar extends Fragment {
-
+    private long changedDate;
+    private Button buttonShowCalendar;
+    private CalendarView calendarView;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -62,13 +69,36 @@ public class Calendar extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+        buttonShowCalendar = view.findViewById(R.id.buttonShowDate);
+        calendarView = view.findViewById(R.id.calendarView);
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month,
+                                            int dayOfMonth) {
+
+               changedDate=new Date(year,month,dayOfMonth).getTime();
+            }
+        });
+        buttonShowCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String selectedDate = sdf.format(new Date(changedDate));
+                Toast.makeText(getContext(), selectedDate, Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
     }
+
 }
